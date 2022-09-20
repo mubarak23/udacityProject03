@@ -13,7 +13,7 @@ jobs:
     steps:
     -uses: actions/checkout@v3
     -name: Build and deploy the Docker Image
-      run: |
+      run: 
          # docker build -t udagram-api-feed ./udagram-api-feed
          # docker tag udagram-api-feed mubarak23/udagram-api-feed
 
