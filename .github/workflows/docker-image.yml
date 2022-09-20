@@ -12,19 +12,25 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Log in to Docker Hub
+    - run : Log in to Docker Hub
     - uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
       run: docker build -t udagram-api-feed ./udagram-api-feed
+    - name: Build the Docker image   
       run: docker build -t udagram-api-user ./udagram-api-user
+    - name: Build the Docker image   
       run: docker build -t udagram-frontend ./udagram-frontend
+    - name: Build the Docker image  
       run: docker build -t udagram-reverseproxy ./udagram-reverseproxy
       
     - name: Docker Push
       run: docker push mubarak23/udagram-api-feed
+    - name: Docker Push   
       run: docker push mubarak23/udagram-api-user
+    - name: Docker Push  
       run: docker push mubarak23/udagram-frontend
+    - name: Docker Push  
       run: docker push mubarak23/udagram-reverseproxy 
