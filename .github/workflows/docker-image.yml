@@ -19,12 +19,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
       run: docker build -t udagram-api-feed ./udagram-api-feed
-           docker build -t udagram-api-user ./udagram-api-user
-           docker build -t udagram-frontend ./udagram-frontend
-           docker build -t udagram-reverseproxy ./udagram-reverseproxy
+      run: docker build -t udagram-api-user ./udagram-api-user
+      run: docker build -t udagram-frontend ./udagram-frontend
+      run: docker build -t udagram-reverseproxy ./udagram-reverseproxy
       
     - name: Docker Push
       run: docker push mubarak23/udagram-api-feed
-           docker push mubarak23/udagram-api-user
-           docker push mubarak23/udagram-frontend
-           docker push mubarak23/udagram-reverseproxy 
+      run: docker push mubarak23/udagram-api-user
+      run: docker push mubarak23/udagram-frontend
+      run: docker push mubarak23/udagram-reverseproxy 
