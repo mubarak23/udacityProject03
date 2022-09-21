@@ -21,9 +21,9 @@ jobs:
         docker build -t udagram-frontend ./udagram-frontend
         docker tag udagram-frontend mubarak23/udagram-frontend
         docker build -t reverseproxy ./udagram-reverseproxy
-        docker tag reverseproxy mubarak23/reverseproxy
+        docker tag reverseproxy mubarak23/udagram-reverseproxy
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
         docker push mubarak23/udagram-api-feed
         docker push mubarak23/udagram-api-user
         docker push mubarak23/udagram-frontend
-        docker push mubarak23/reverseproxy
+        docker push mubarak23/udagram-reverseproxy
