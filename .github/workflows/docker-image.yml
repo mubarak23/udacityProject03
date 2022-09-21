@@ -1,8 +1,8 @@
-name: Publish Docker image
+name: Docker Image CI
 
 on:
-  push: 
-    branches: ["main"] 
+  push:
+    branches: [ "main" ]
 
 jobs:
 
@@ -11,23 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    -uses: actions/checkout@v3
-    -name: Build and deploy the Docker image
-     run: |
-       - docker build -t udagram-api-feed ./udagram-api-feed
-       - docker tag udagram-api-feed mubarak23/udagram-api-feed
-
-       - docker build -t udagram-api-user ./udagram-api-user
-       - docker tag udagram-api-user mubarak23/udagram-api-user
-
-       - docker build -t udagram-frontend ./udagram-frontend
-       - docker tag udagram-frontend mubarak23/udagram-frontend
-
-       - docker build -t udagram-reverseproxy ./udagram-reverseproxy
-       - docker tag udagram-reverseproxy mubarak23/udagram-reverseproxy
-
-       echo ${{ secrets.DOCKER_PASSWORD}} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-       - docker push mubarak23/udagram-api-feed
-       - docker push mubarak23/udagram-api-user
-       - docker push mubarak23/udagram-frontend
-       - docker push mubarak23/udagram-reverseproxy
+    - uses: actions/checkout@v3
+    - name: Build and deploy the Docker image
+      run: |
+        # docker build -t udagram-api-feed ./udagram-api-feed
+        # docker tag udagram-api-feed mubarak23/udagram-api-feed
+        # docker build -t udagram-api-user ./udagram-api-user
+        # docker tag udagram-api-user mubarak23/udagram-api-user
+        # docker build -t udagram-frontend ./udagram-frontend
+        # docker tag udagram-frontend mubarak23/udagram-frontend:v1
+        docker build -t reverseproxy ./udagram-reverseproxy
+        docker tag reverseproxy 2bit2bit/reverseproxy:v1
+        echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        # docker push mubarak23/udagram-api-feed
+        # docker push mubarak23/udagram-api-user
+        # docker push mubarak23/udagram-frontend:v1
+        docker push mubarak23/reverseproxy:v1
